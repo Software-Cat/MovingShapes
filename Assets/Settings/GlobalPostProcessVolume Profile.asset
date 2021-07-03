@@ -187,8 +187,8 @@ MonoBehaviour:
   active: 1
   m_AdvancedMode: 0
   postExposure:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.17
   contrast:
     m_OverrideState: 1
     m_Value: 5
@@ -232,7 +232,7 @@ MonoBehaviour:
     m_Value: {x: 0.97315145, y: 1, z: 0.93191445, w: 0.20689656}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.96475464, z: 0.9309864, w: 0.05172414}
+    m_Value: {x: 1, y: 0.96475464, z: 0.9309864, w: 0.21385796}
 --- !u!114 &-2999521490874026124
 MonoBehaviour:
   m_ObjectHideFlags: 3
