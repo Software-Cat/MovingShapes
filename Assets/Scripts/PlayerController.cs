@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         // Gravity
         if (playerController.isGrounded && velocity.y < 0)
         {
-            velocity.y = 0f;
+            velocity.y = -2f;
         }
 
         velocity.y += Registry.GRAVITY * Time.deltaTime;
