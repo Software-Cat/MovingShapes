@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private float turnSmoothVelocity;
     private Vector3 velocity;
+    private float originalStepOffset;
 
     [Header("Jumping")]
     [SerializeField] protected float jumpHeight = 3f;
@@ -39,6 +40,9 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         playerController = GetComponent<CharacterController>();
+
+        // Register self
+        Registry.PLAYER = this;
     }
 
     // Start is called before the first frame update
@@ -47,6 +51,9 @@ public class PlayerController : MonoBehaviour
         // Hide cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        // Set step offset
+        originalStepOffset = playerController.stepOffset;
     }
 
     private void Update()
@@ -79,6 +86,18 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * Registry.GRAVITY);
             jumpInput = false;
+        }
+
+        if (playerController.isGrounded)
+        {
+            // Enable stepping when on ground
+            playerController.stepOffset = originalStepOffset;
+        }
+        else
+        {
+            // Disable stepping when jumping
+            originalStepOffset = playerController.stepOffset;
+            playerController.stepOffset = 0;
         }
     }
 }
